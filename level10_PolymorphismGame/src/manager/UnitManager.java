@@ -1,4 +1,4 @@
-package polymorphismGame;
+package manager;
 
 public class UnitManager {
 
