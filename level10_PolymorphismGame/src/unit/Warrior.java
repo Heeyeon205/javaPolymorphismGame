@@ -1,12 +1,13 @@
 package unit;
 
-import java.awt.Taskbar.State;
 
 public class Warrior extends Player {
 
 
-	public Warrior(int hp, int power, String name, State state) {
-		super(hp, power, name, state);
+
+
+	public Warrior(String name, int hp, int power, funtion.State state) {
+		super(name, hp, power, state);
 	}
 
 	@Override

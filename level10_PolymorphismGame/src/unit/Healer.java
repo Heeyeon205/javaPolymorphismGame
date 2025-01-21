@@ -1,12 +1,14 @@
 package unit;
 
-import java.awt.Taskbar.State;
+import funtion.State;
 
 public class Healer extends Player {
 
 
-	public Healer(int hp, int power, String name, State state) {
-		super(hp, power, name, state);
+
+
+	public Healer(String name, int hp, int power, State state) {
+		super(name, hp, power, state);
 	}
 
 	@Override

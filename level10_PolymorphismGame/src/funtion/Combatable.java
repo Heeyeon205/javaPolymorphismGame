@@ -2,7 +2,7 @@ package funtion;
 
 import unit.Unit;
 
-public interface Skillable {
-
+public interface Combatable {
 		void Skill(Unit target);
+		void attack(Unit target);
 }

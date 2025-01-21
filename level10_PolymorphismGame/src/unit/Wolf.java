@@ -1,12 +1,13 @@
 package unit;
 
-import java.awt.Taskbar.State;
 
 public class Wolf extends Enemy {
 
 
-	public Wolf(int hp, int power, String name, State state) {
-		super(hp, power, name, state);
+
+
+	public Wolf(String name, int hp, int power, funtion.State state) {
+		super(name, hp, power, state);
 	}
 
 	@Override
