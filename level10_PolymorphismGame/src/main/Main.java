@@ -14,7 +14,6 @@ public class Main {
 			}
 		}
 		System.out.println("[게임 종료]");
-		
 	}
 
 }
