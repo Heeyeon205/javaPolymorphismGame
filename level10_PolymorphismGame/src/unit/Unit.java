@@ -53,6 +53,12 @@ public abstract class Unit implements Combatable{
 	}
 	
 	public void printData() {
-		System.out.printf("[%s] HP: %d/%d, ATK: %d\n", name, hp, MAX_HP, power);
+		if(this.state.equals(State.NOMAL)) {
+			System.out.printf("[%s] (❤️ %d/%d) (⚔️ %d)\n", name, hp, MAX_HP, power);
+		}else if (this.state.equals(State.STUN)) {
+			System.out.printf("[%s] (❤️ %d/%d) (💫)\n", name, hp, MAX_HP);
+		}else if (this.state.equals(State.DEATH)) {
+			System.out.printf("[%s] (❤️ %d/%d) (💀)\n", name, hp, MAX_HP);
+		}
 	}
 }
