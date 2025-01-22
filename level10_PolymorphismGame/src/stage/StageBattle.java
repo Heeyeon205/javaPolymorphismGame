@@ -67,8 +67,8 @@ public class StageBattle extends Stage {
 	}
 
 	private <T extends Unit> boolean isAllDead(ArrayList<T> units) {
-		for (T unit : units) {
-			if (unit.getState().equals(State.NOMAL)) {
+		for (T u : units) {
+			if (u.getState().equals(State.NOMAL) || u.getState().equals(State.STUN)) {
 				return false;
 			}
 		}
@@ -107,6 +107,9 @@ public class StageBattle extends Stage {
 
 	private void playerTurn() {
 		for (int i = 0; i < um.getpList().size(); i++) {
+			if (isAllDead(um.geteList())) {
+	            return;
+	        }
 			if (um.getpList().get(i).getState().equals(State.NOMAL)) {
 				playerAtk(i);
 			}
@@ -118,6 +121,9 @@ public class StageBattle extends Stage {
 			Unit attacker = um.geteList().get(i);
 			int skill = GameManager.getRandom(4);
 			if (attacker.getHp() > 0) {
+				if (isAllDead(um.getpList())) {
+		            return;
+		        }
 				if (skill == 0) {
 					int idx = randomTarget();
 					if (attacker.getName().equals("오크")) {
