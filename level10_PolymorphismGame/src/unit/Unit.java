@@ -44,15 +44,15 @@ public abstract class Unit implements Combatable{
 	@Override
 	public void attack(Unit target) {
 		target.setHp(target.getHp()-power);
+		System.out.printf("%s가 %s를 %d의 데미지로 공격!\n", this.getName(), target.getName(), this.getPower());
 		if(target.getHp() <= 0) {
 			target.setHp(0);
 			target.setState(State.DEATH);
 			System.out.println(target.getName() + " 전투 불능!");
-			
 		}
 	}
 	
 	public void printData() {
-		System.out.printf("[%-3s] HP: %-4d/%-4d, ATK: %-2d\n", name, hp, MAX_HP, power);
+		System.out.printf("[%s] HP: %d/%d, ATK: %d\n", name, hp, MAX_HP, power);
 	}
 }

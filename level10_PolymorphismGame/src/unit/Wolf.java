@@ -9,13 +9,13 @@ public class Wolf extends Enemy {
 	}
 
 	@Override
-	public void Skill(Unit unit) {
-			unit.setHp(unit.getHp()-(int)(this.getPower()*0.5));
-			System.out.printf("%s가 %s를 공격했습니다! (피해량: %d)\n", this.getName(), unit.getName(), (int)(this.getPower()*0.5));
-			if(unit.getHp() <= 0) {
-				unit.setHp(0);
-				unit.setState(State.DEATH);
-				System.out.printf("%s는 %s의 공격으로 전투 불능!\n", unit.getName(), this.getName());
-			}
+	public void Skill(Unit target) { // 공격력의 50% 적 전체 데미지
+		target.setHp(target.getHp() - (int) (this.getPower() * 0.5));
+		System.out.printf("%s가 %s를 %d의 데미지로 공격!\n", this.getName(), target.getName(), (int) (this.getPower() * 0.5));
+		if (target.getHp() <= 0) {
+			target.setHp(0);
+			target.setState(State.DEATH);
+			System.out.printf("%s는 %s의 공격으로 전투 불능!\n", target.getName(), this.getName());
+		}
 	}
 }

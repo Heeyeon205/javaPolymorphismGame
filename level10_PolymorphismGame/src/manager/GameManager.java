@@ -55,10 +55,7 @@ public class GameManager {
 	}
 	
 	public boolean changeStage() {
-		System.out.println("--------------------");
-		System.out.println("Cur Stage: " + curStage);
-		System.out.println("Next Stage: " + nextStage);
-		System.out.println("--------------------\n");
+		System.out.println("-----[" + curStage + "] => [" + nextStage + "]-----\n");
 		
 		if(curStage.equals(nextStage)) {
 			return true;

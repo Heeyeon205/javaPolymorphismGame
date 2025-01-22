@@ -1,7 +1,6 @@
 package manager;
 
 import java.util.ArrayList;
-import java.util.Random;
 import function.State;
 import unit.Bat;
 import unit.Enemy;
@@ -13,9 +12,8 @@ import unit.Wizard;
 import unit.Wolf;
 
 public class UnitManager {
-	Random rd = new Random();
-	ArrayList<Player> pList = new ArrayList<>();
-	ArrayList<Enemy> eList = new ArrayList<>();
+	private ArrayList<Player> pList = new ArrayList<>();
+	private ArrayList<Enemy> eList = new ArrayList<>();
 	
 	public ArrayList<Player> getpList() {
 		return pList;
@@ -25,9 +23,9 @@ public class UnitManager {
 	}
 
 	public  UnitManager() {
-		pList.add(new Warrior("전사", 1200, 50, State.NOMAL));
-		pList.add(new Wizard("마법사", 800, 70, State.NOMAL));
-		pList.add(new Healer("힐러", 600, 30, State.NOMAL));
+		pList.add(new Warrior("전사", 800, 50, State.NOMAL));
+		pList.add(new Wizard("마법사", 600, 70, State.NOMAL));
+		pList.add(new Healer("힐러", 400, 30, State.NOMAL));
 		
 		eList.add(new Bat("박쥐", 300, 20, State.NOMAL));
 		eList.add(new Orc("오크", 500, 30, State.NOMAL));

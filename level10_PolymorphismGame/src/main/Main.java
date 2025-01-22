@@ -13,7 +13,7 @@ public class Main {
 				break;
 			}
 		}
-		System.out.println("게임 종료");
+		System.out.println("[게임 종료]");
 		
 	}
 

@@ -31,28 +31,24 @@ public class StageBattle extends Stage {
 
 	private void playerAtk(int index) {
 		Player attacker = um.getpList().get(index);
-		if (attacker.getHp() <= 0 || attacker.getState().equals(State.STUN) || attacker.getState().equals(State.SILENCE)) {
+		if (attacker.getHp() <= 0 || attacker.getState().equals(State.STUN)) {
 			return;
 		}
 		
 		Enemy target = selectTarget(um.geteList());
-		System.out.printf("[%s] [1] 공격 [2] 스킬", um.getpList().get(index).getName());
+		System.out.printf("%s: [1] 공격 [2] 스킬", um.getpList().get(index).getName());
 		int sel = GameManager.getInt("", 1, 3);
 		
 		if (sel == 1) {
 			um.getpList().get(index).attack(target);
-			System.out.printf("%s가 %s를 공격! (피해량: %d)\n", attacker.getName(), target.getName(), attacker.getPower());
-			
 		} else if (sel == 2) {
 			if(attacker.getName().equals("전사")) {
 				attacker.Skill(target);
-				System.out.printf("%s가 %s를 공격! (피해량: %d)\n", attacker.getName(), target.getName(), attacker.getPower()*2);
 			}else if(attacker.getName().equals("마법사")) {
 				System.out.printf("%s의 광역 마법!\n", attacker.getName());
 				for(int i = 0; i < um.geteList().size(); i++) {
 					if(um.geteList().get(i).getHp() > 0) {
 					attacker.Skill(um.geteList().get(i));
-					System.out.printf("%s가 %s를 공격! (피해량: %d)\n", attacker.getName(), um.geteList().get(i).getName(), (int)(attacker.getPower()*0.7));
 					}
 				}
 			}else if(attacker.getName().equals("힐러")) {
@@ -66,17 +62,15 @@ public class StageBattle extends Stage {
 	private void enemyAtk(int index) {
 		Enemy attacker = um.geteList().get(index);
 		if (attacker.getHp() <= 0) {
-			System.out.println(attacker.getName() + "는 전투 불능 상태입니다.");
 			return;
 		}
 		Player target = selectTarget(um.getpList());
 		attacker.attack(target);
-		System.out.printf("%s가 %s를 공격했습니다! (피해량: %d)\n", attacker.getName(), target.getName(), attacker.getPower());
 	}
 
 	private <T extends Unit> boolean isAllDead(ArrayList<T> units) {
 		for (T unit : units) {
-			if (unit.getHp() > 0) {
+			if (unit.getState().equals(State.NOMAL)) {
 				return false;
 			}
 		}
@@ -99,14 +93,14 @@ public class StageBattle extends Stage {
 			printUnit();
 			
 			for (int i = 0; i < um.getpList().size(); i++) {
-				if (um.getpList().get(i).getHp() > 0) {
+				if (um.getpList().get(i).getState().equals(State.NOMAL)) {
 					playerAtk(i);
 				}
 			}
 			
 			if (isAllDead(um.geteList())) {
 				System.out.println("[Player Win] 적을 모두 물리쳤습니다!");
-				int sel = GameManager.getInt("[1] 이어서 진행 [2] 게임 종료", 1, 3);
+				int sel = GameManager.getInt("[1] 새로운 게임 [2] 게임 종료", 1, 3);
 				if (sel == 1) {
 					init();
 					continue;
@@ -117,14 +111,14 @@ public class StageBattle extends Stage {
 			}
 			
 			for (int i = 0; i < um.getpList().size(); i++) {
-				if (um.getpList().get(i).getState().equals(State.STUN) || um.getpList().get(i).getState().equals(State.SILENCE)) {
+				if (um.getpList().get(i).getState().equals(State.STUN)) {
 					um.getpList().get(i).setState(State.NOMAL);
 					System.out.printf("%s 상태이상 회복!\n", um.getpList().get(i).getName());
 				}
 			}
 			
-			int skill = GameManager.getRandom(4);
 			for (int i = 0; i < um.geteList().size(); i++) {
+				int skill = GameManager.getRandom(4);
 				if (um.geteList().get(i).getHp() > 0) {
 					if(skill == 0) {
 						if(um.geteList().get(i).getName().equals("오크")){
@@ -132,8 +126,8 @@ public class StageBattle extends Stage {
 						}else if(um.geteList().get(i).getName().equals("박쥐")) {
 							um.geteList().get(i).Skill(um.getpList().get(i));
 						}else if(um.geteList().get(i).getName().equals("늑대")) {
-							for(int j = 0; i < um.getpList().size(); i++) {
-								System.out.println("늑대의 표호!");
+							System.out.println("늑대의 표호!");
+							for(int j = 0; j < um.getpList().size(); j++) {
 								um.geteList().get(i).Skill(um.getpList().get(j));
 							}
 						}
