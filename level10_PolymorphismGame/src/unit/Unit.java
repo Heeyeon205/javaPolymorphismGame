@@ -1,9 +1,7 @@
 package unit;
 
-import funtion.Combatable;
-import funtion.State;
-import manager.UnitManager;
-
+import function.Combatable;
+import function.State;
 
 public abstract class Unit implements Combatable{
 	public final int MAX_HP;
@@ -11,7 +9,6 @@ public abstract class Unit implements Combatable{
 	private int power;
 	private String name;
 	private State state = State.NOMAL;
-	private UnitManager uMgr;
 	
 	public Unit(String name, int hp, int power, State state) {
 		super();
@@ -20,7 +17,6 @@ public abstract class Unit implements Combatable{
 		this.power = power;
 		this.state = state;
 		MAX_HP = hp;
-//		uMgr = uMgr.getInstance();
 	}
 
 	public int getHp() {
@@ -35,9 +31,14 @@ public abstract class Unit implements Combatable{
 	public State getState() {
 		return state;
 	}
-
 	public void setState(State state) {
 		this.state = state;
+	}
+	public int getPower() {
+		return power;
+	}
+	public int getMAX_HP() {
+		return MAX_HP;
 	}
 
 	@Override
@@ -45,13 +46,13 @@ public abstract class Unit implements Combatable{
 		target.setHp(target.getHp()-power);
 		if(target.getHp() <= 0) {
 			target.setHp(0);
-			target.setState(state.DEATH);
+			target.setState(State.DEATH);
 			System.out.println(target.getName() + " 전투 불능!");
 			
 		}
 	}
 	
 	public void printData() {
-		System.out.printf("[%s] HP: %d/%d, ATK: %d\n", name, hp, MAX_HP, power);
+		System.out.printf("[%-3s] HP: %-4d/%-4d, ATK: %-2d\n", name, hp, MAX_HP, power);
 	}
 }

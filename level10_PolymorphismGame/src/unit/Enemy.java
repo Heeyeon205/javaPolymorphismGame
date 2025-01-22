@@ -1,10 +1,10 @@
 package unit;
 
-import java.awt.Taskbar.State;
+import function.State;
 
 public abstract class Enemy extends Unit {
 
-	public Enemy(String name, int hp, int power, funtion.State state) {
+	public Enemy(String name, int hp, int power, State state) {
 		super(name, hp, power, state);
 	}
 }

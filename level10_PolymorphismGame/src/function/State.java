@@ -1,4 +1,4 @@
-package funtion;
+package function;
 
 public enum State {
 	NOMAL,
