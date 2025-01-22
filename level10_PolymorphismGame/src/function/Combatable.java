@@ -3,6 +3,6 @@ package function;
 import unit.Unit;
 
 public interface Combatable {
-		void Skill(Unit target);
+		void skill(Unit target);
 		void attack(Unit target);
 }

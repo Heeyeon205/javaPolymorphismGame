@@ -8,7 +8,7 @@ public class Bat extends Enemy {
 	}
 
 	@Override
-	public void Skill(Unit target) {	// 공격력의 30% 흡혈
+	public void skill(Unit target) {	// 공격력의 30% 흡혈
 		System.out.printf("%s가 %s를 %d 데미지로 흡혈 공격!\n", this.getName(), target.getName(), this.getPower());
 		target.setHp(target.getHp()-this.getPower());
 		if(target.getHp() <= 0) {

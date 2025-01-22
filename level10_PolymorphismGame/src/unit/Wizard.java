@@ -9,7 +9,7 @@ public class Wizard extends Player{
 	}
 
 	@Override
-	public void Skill(Unit target) {	// 공격력의 70% 전체 공격
+	public void skill(Unit target) {	// 공격력의 70% 전체 공격
 		target.setHp(target.getHp()-(int)(this.getPower()*0.7));
 		System.out.printf("%s가 %s를 %d의 데미지로 공격!\n", this.getName(), target.getName(), (int)(this.getPower()*0.7));
 		if(target.getHp() <= 0) {

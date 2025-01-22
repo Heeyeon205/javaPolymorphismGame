@@ -9,7 +9,7 @@ public class Orc extends Enemy {
 	}
 
 	@Override
-	public void Skill(Unit target) {	// 공격력 2배 데미지 + 기절 부여
+	public void skill(Unit target) {	// 공격력 2배 데미지 + 기절 부여
 		int strike = this.getPower()*2;
 		target.setHp(target.getHp()-strike);
 		System.out.printf("%s가 %s를 %d 데미지로 기절 공격!\n", this.getName(), target.getName(), strike);

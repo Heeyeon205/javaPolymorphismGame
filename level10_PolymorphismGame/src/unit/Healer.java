@@ -9,7 +9,7 @@ public class Healer extends Player {
 	}
 
 	@Override
-	public void Skill(Unit target) {	// 공격력 만큼 아군 회복
+	public void skill(Unit target) {	// 공격력 만큼 아군 회복
 			target.setHp(target.getHp()+this.getPower());
 			if(target.getHp() > target.MAX_HP) {
 				target.setHp(target.MAX_HP);
